@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.contrib.auth.views import redirect_to_login
+from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, DetailView, ListView, FormView, CreateView, UpdateView
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from books.models import Books
 from django.db.models import F
 from django.utils import timezone
@@ -16,6 +18,17 @@ from .forms import AddForm
 #         form.save()
 #         return super().form_valid(form)
 
+
+class UserAccessMixin(PermissionRequiredMixin):
+    def dispatch(self, request, *args, **kwargs):
+        if not self.request.user.is_authenticated:
+            return redirect_to_login(self.request.get_full_path(), self.request.get_login_url(),
+                                     self.request.get_redirect_field_name())
+        if not self.has_permission():
+            return redirect('/books')
+        return super(UserAccessMixin, self).dispatch(request, *args, **kwargs)
+
+
 class AddFormView(CreateView):
     model = Books
     # fields = ['title']
@@ -30,7 +43,12 @@ class AddFormView(CreateView):
         return initials
 
 
-class BookEditView(UpdateView):
+class BookEditView(UserAccessMixin, UpdateView):
+    raise_exception = True
+    permission_required = 'books.change_books'
+
+    print(permission_required)
+
     model = Books
     template_name = "add.html"
     success_url = "/books/"
