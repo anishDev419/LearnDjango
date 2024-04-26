@@ -17,6 +17,23 @@ THIS IS EX 2
 
 <a href="{% url 'cbv:redirect-task' pk=3 %}" >just you</a>
 
+<br>
+
+
+{{ car }}
+
+<img src="{{ image }}" alt="Car Photo">
+
+<br>
+
+{{ image }}
+{{ car.photo.path }}
+{{ car.photo.url }}
+<img src="{{ car.photo.url }}" alt="Car Photo">
+
+
+<img src="{}" >
+
 
 </body>
 </html>

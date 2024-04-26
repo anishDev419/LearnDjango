@@ -1,6 +1,12 @@
+from pathlib import Path
+
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView, RedirectView
 from django.db.models import F
+from django.conf import settings
+from PIL import Image
+
+from cars.models import Cars
 import logging
 
 from members.models import Member
@@ -11,9 +17,29 @@ class Ex2View(TemplateView):
     template_name = "ex2.html"
 
     def get_context_data(self, **kwargs):
+        print("settings.MEDIA_ROOT")
+        print(settings.MEDIA_ROOT)
+
+        car = Cars.objects.get(name="57 Chevy")
+
+        print(car.photo)
+        print(car.photo.name)
+
+        path = Path(settings.MEDIA_ROOT) / car.photo.name
+
+        print('path: ', path)
+
+        image = Image.open(car.photo)
+
+        print("data attr: ", image)
+
         context = super().get_context_data(**kwargs)
+
         context['data'] = "GET CONTEXT DATA"
         context['title'] = "ex2"
+        context['image'] = path
+        context['car'] = car
+
         return context
 
 
@@ -28,7 +54,7 @@ class PostPreLoadTaskView(RedirectView):
 
         pk = kwargs['pk']
         pick_member = Member.objects.filter(id=pk)
-        pick_member.update(count=F('count')+1)
+        pick_member.update(count=F('count') + 1)
         return super().get_redirect_url(*args, **kwargs)
 
 
@@ -37,7 +63,7 @@ class SinglePost(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['member'] = get_object_or_404(Member,pk=self.kwargs['pk'])
+        context['member'] = get_object_or_404(Member, pk=self.kwargs['pk'])
         context['data'] = "THIS IS NEW"
         context['title'] = "ex4"
         return context
