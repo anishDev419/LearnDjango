@@ -67,3 +67,17 @@ class SinglePost(TemplateView):
         context['data'] = "THIS IS NEW"
         context['title'] = "ex4"
         return context
+
+
+class Gradient(TemplateView):
+    template_name = "gradient.html"
+    print("GRADIENT HIT")
+
+    pass
+
+
+class FullGradient(TemplateView):
+    template_name = "full_gradient.html"
+    print("GRADIENT HIT")
+
+    pass

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gradient TEST</title>
+
+    <style>
+        body{
+            background-color: black;
+        }
+
+        p{
+            color: white;
+        }
+
+        .container{
+            height: 50vh;
+            background-image: linear-gradient( to bottom right, rebeccapurple, red, rebeccapurple);
+        }
+
+        .oklab-container{
+            height: 50vh;
+            background-image: linear-gradient(in oklab, rebeccapurple, red)
+        }
+
+        .hsl-container{
+            height: 50vh;
+            background-image: linear-gradient(in hsl, rebeccapurple, red)
+        }
+
+    </style>
+
+</head>
+<body>
+
+<p> DIAGONAL </p>
+<div class="container" >
+    <p> CONTENT LIES HERE !!! </p>
+</div>
+<br>
+<br>
+
+<p> oklab </p>
+<div class="oklab-container" >
+    <p> CONTENT LIES HERE !!! </p>
+</div>
+<br>
+<br>
+
+
+<p> hsl </p>
+<div class="hsl-container" >
+    <p> CONTENT LIES HERE !!! </p>
+</div>
+<br>
+<br>
+
+
+</body>
+
+
+
+
+
+</html>

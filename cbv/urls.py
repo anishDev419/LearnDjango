@@ -1,7 +1,7 @@
 from django.urls import path
 from django.views.generic import TemplateView, RedirectView
 
-from cbv.views import Ex2View, PostPreLoadTaskView, SinglePost
+from cbv.views import Ex2View, PostPreLoadTaskView, SinglePost, Gradient, FullGradient
 
 app_name="cbv"
 
@@ -11,4 +11,8 @@ urlpatterns = [
     path('rdt', RedirectView.as_view(url="http://www.google.com/"), name='go-you'),
     path('ex3/<int:pk>', PostPreLoadTaskView.as_view(), name='redirect-task'),
     path('ex4/<int:pk>/', SinglePost.as_view(), name='single-post'),
+    path('gradient', Gradient.as_view(), name='gradient'),
+    path('full-gradient', FullGradient.as_view(), name='full-gradient'),
+
+
 ]
