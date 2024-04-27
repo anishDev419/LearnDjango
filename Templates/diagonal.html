@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Diagonal</title>
+
+    <style>
+
+        body {
+            background-color: #383838;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure the body fills the viewport */
+            width: 100vw
+        }
+
+        .main-container{
+            min-height: 40vh; /* Ensure the body fills the viewport */
+            background-color: white;
+            width: 100%;
+            clip-path: polygon(0% 0%, 100% 15%, 100% 85%, 0% 100%);
+        }
+
+    </style>
+</head>
+<body>
+
+
+    <div class="carousel">
+        <div class="carousel-select w-75 mx-auto" >
+                <button class="carousel-prev">&lt;</button>
+
+                <div class="carousel-track d-flex flex-nowrap ">
+
+
+                    {% for product in carousel %}
+                    <div class="carousel-item">
+
+                        <div class="main-container" >
+                            <div class="img-container">
+                                <img src="{{ product.product_image }}" alt="{{ product.product_image }} Image">
+                            </div>
+
+                            <div class="detail-container">
+                                <p>{{ product.product_name }}</p>
+                            </div>
+                        </div>
+
+
+
+                        <!-- You can also add additional HTML markup for each item -->
+                    </div>
+                    {% endfor %}
+
+
+
+
+                </div>
+
+            </div>
+
+                <button class="carousel-next">&gt;</button>
+        </div>
+
+
+<div class="main-container" >
+
+    WE WORK HERE
+
+</div>
+
+</body>
+</html>

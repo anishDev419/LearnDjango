@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clip Path</title>
+    <style>
+
+        body{
+            background-color: black;
+        }
+
+        .img-container{
+            width: 1070px;
+            height: 590px;
+            position: relative; /* Ensure the container establishes a positioning context */
+        }
+
+        .img-container img{
+            position: absolute; /* Position the image relative to its container */
+            top: 0; /* Align the image to the top of the container */
+            left: 0; /* Align the image to the left of the container */
+            width: 100%; /* Ensure the image takes the full width of the container */
+            height: 100%; /* Ensure the image takes the full height of the container */
+            object-fit: cover; /* Maintain the aspect ratio while covering the container */
+
+            clip-path: polygon(0% 20%, 100% 0%, 100% 80%, 0% 100%);
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="img-container" >
+    <img src="{{ car.photo.url }}" alt="Car Photo">
+
+</div>
+
+</body>
+</html>

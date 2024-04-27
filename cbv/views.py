@@ -78,6 +78,20 @@ class Gradient(TemplateView):
 
 class FullGradient(TemplateView):
     template_name = "full_gradient.html"
-    print("GRADIENT HIT")
-
     pass
+
+
+class Diagonal(TemplateView):
+    template_name = "diagonal.html"
+    pass
+
+
+class ClipPath(TemplateView):
+    template_name = "clip_path.html"
+
+    def get_context_data(self, **kwargs):
+        car = Cars.objects.get(name="57 Chevy")
+        context = super().get_context_data(**kwargs)
+        context['car'] = car
+        print('car.photo.url', car.photo.url)
+        return context
