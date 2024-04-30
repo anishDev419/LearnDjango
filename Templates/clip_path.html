@@ -5,17 +5,28 @@
     <title>Clip Path</title>
     <style>
 
+
         body{
             background-color: black;
         }
 
-        .img-container{
+        .white-tear{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .tear-container{
             width: 1070px;
             height: 590px;
             position: relative; /* Ensure the container establishes a positioning context */
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .img-container img{
+        .tear-container img{
             position: absolute; /* Position the image relative to its container */
             top: 0; /* Align the image to the top of the container */
             left: 0; /* Align the image to the left of the container */
@@ -26,14 +37,53 @@
             clip-path: polygon(0% 20%, 100% 0%, 100% 80%, 0% 100%);
         }
 
+
+        .white-tear .top-hr{
+            width: 100%;
+        }
+
+
+        .white-tear .bottom-hr{
+            width: 100%;
+        }
+
+        .white-tear hr{
+            transform: rotate(-7deg) scale(1.01);
+        }
+
+
+
+        .main-container{
+            margin-top: 150px;
+        }
+
     </style>
 </head>
 <body>
 
-<div class="img-container" >
-    <img src="{{ car.photo.url }}" alt="Car Photo">
+<div class="main-container my-5" >
+
+    <div class="white-tear" >
+
+        <div class="tear-container" >
+            <hr class="top-hr" >
+            <img src="{{ car.photo.url }}" alt="Car Photo">
+            <hr class="bottom-hr" >
+        </div>
+
+    </div>
+
+    <div class="line-container" >
+
+        <svg viewBox="0 0 100 100" width="100" height="100" style="border: 2px solid red" >
+            <line x1="0" y1="0" x2="100" y2="0" stroke="white" stroke-width="5"/>
+        </svg>
+
+    </div>
+
 
 </div>
+
 
 </body>
 </html>

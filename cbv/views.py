@@ -95,3 +95,14 @@ class ClipPath(TemplateView):
         context['car'] = car
         print('car.photo.url', car.photo.url)
         return context
+
+
+class LearnSVG1(TemplateView):
+    template_name = "learn_svg_1.html"
+
+    def get_context_data(self, **kwargs):
+        car = Cars.objects.get(name="57 Chevy")
+        context = super().get_context_data(**kwargs)
+        context['car'] = car
+        print('car.photo.url', car.photo.url)
+        return context

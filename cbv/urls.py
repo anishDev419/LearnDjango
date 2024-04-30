@@ -1,7 +1,7 @@
 from django.urls import path
 from django.views.generic import TemplateView, RedirectView
 
-from cbv.views import Ex2View, PostPreLoadTaskView, SinglePost, Gradient, FullGradient, Diagonal, ClipPath
+from cbv.views import Ex2View, PostPreLoadTaskView, SinglePost, Gradient, FullGradient, Diagonal, ClipPath, LearnSVG1
 
 app_name="cbv"
 
@@ -15,4 +15,5 @@ urlpatterns = [
     path('full-gradient', FullGradient.as_view(), name='full-gradient'),
     path('diagonal', Diagonal.as_view(), name='diagonal'),
     path('clip-path', ClipPath.as_view(), name='clip-path'),
+    path('learn-svg', LearnSVG1.as_view(), name='learn-svg'),
 ]
