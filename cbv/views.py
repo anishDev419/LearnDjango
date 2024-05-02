@@ -106,3 +106,7 @@ class LearnSVG1(TemplateView):
         context['car'] = car
         print('car.photo.url', car.photo.url)
         return context
+
+
+class LineDivide1(TemplateView):
+    template_name = "line_divide/line_divide_1.html"
