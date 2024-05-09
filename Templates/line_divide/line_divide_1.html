@@ -8,6 +8,389 @@
 
     <link href="{% static 'cbv.css' %}" rel="stylesheet">
 
+    <style>
+@font-face {
+    font-family: 'Comic Sans MS';
+    src: url('../fonts/comic-sans-ms.comicz/comicz.ttf') format('truetype');
+}
+
+
+    /* WEBSITE STARTS */
+
+    .body-content {
+        background-color: #383838;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh; /* Ensure the body fills the viewport */
+    }
+
+
+    .main-content{
+        flex-grow: 1
+    }
+
+    /* WEBSITE ENDS */
+
+
+/* HEADER NAVBAR STARTS */
+
+/* Transparent background for the navbar */
+.navbar {
+    background-color: #383838;
+    box-shadow: none; /* No shadow for a cleaner look */
+    width: 100%;
+}
+
+/* Padding for aesthetic spacing */
+.navbar .container {
+  padding: 0.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Display flex and justify content for navbar-nav */
+.navbar .container .navbar-nav {
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.navbar .container .navbar-nav {
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+  flex-grow: 1; /* Allow the navbar to grow to fill available space */
+}
+
+.navbar .container .navbar-nav .nav-item .header-title {
+  text-decoration: none;
+  font-family: 'Comic Sans MS', sans-serif;
+  color: white;
+}
+
+.navbar .container .navbar-nav .nav-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.navbar-nav .logo {
+    width: 100px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Centers the image in the div */
+    margin: 0 auto; /* Centers the div element horizontally */
+}
+
+.logo img {
+    width: 100%; /* Makes the image fill the container */
+    height: auto; /* Maintain aspect ratio */
+}
+
+@media (max-width: 992px) {
+  /* CSS rules inside this block will only apply when the viewport width is 992px or less */
+  /* You can include styles for smaller screens, such as adjusting the layout or hiding certain elements */
+}
+
+/* HEADER NAVBAR ENDS */
+
+
+
+/* FOOTER STARTS */
+
+.footer-section {
+  background: #585858;
+  position: relative;
+}
+
+.footer-cta {
+  border-bottom: 1px solid #373636;
+}
+
+.footer-cta .row {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.single-cta {
+  display: flex;
+  align-items: center; /* Aligns items vertically in the center */
+}
+
+.single-cta i {
+  color: #ff5e14;
+  font-size: 30px;
+  margin-top: 8px;
+  flex: 0 0 auto; /* Prevents <i> from growing or shrinking */
+}
+
+.cta-text {
+  padding-left: 15px;
+  flex-grow: 1; /* Allows .cta-text to grow and fill the remaining space */
+  display: flex;
+  flex-direction: column; /* Stacks h4 and span vertically */
+  justify-content: center; /* Centers content vertically */
+  min-width: 200px; /* Adjust the min-width as needed */
+}
+
+.cta-text h4 {
+  font-family: 'Comic Sans MS', sans-serif;
+  color: #e3e2e4;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.cta-text span {
+  font-family: 'Comic Sans MS', sans-serif;
+  color: #e3e2e4;
+  font-size: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* FOOTER IMG STARTS */
+
+.footer-logo {
+    width: 100px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Centers the image in the div */
+    margin: 0 auto; /* Centers the div element horizontally */
+}
+
+.footer-logo img {
+    width: 100%; /* Makes the image fill the container */
+    height: auto; /* Maintain aspect ratio */
+}
+
+
+/* FOOTER IMG ENDS */
+
+
+/* FOOTER WIDGET 1 STARTS */
+
+.footer-text p {
+  font-family: 'Comic Sans MS', sans-serif;
+  margin-bottom: 14px;
+  font-size: 14px;
+  color: #e3e2e4;
+  line-height: 28px;
+}
+
+.footer-social-icon span {
+  color: #fff;
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: 'Comic Sans MS', sans-serif;
+  margin-bottom: 20px;
+}
+
+.footer-social-icon a {
+  color: #fff;
+  font-size: 16px;
+  margin-right: 15px;
+}
+.footer-social-icon i {
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  line-height: 38px;
+  border-radius: 50%;
+}
+.facebook-bg{
+  background: #3B5998;
+}
+.twitter-bg{
+  background: #55ACEE;
+}
+.instagram-bg {
+  background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+}
+.google-bg{
+  background: #DD4B39;
+}
+.footer-widget-heading h3 {
+  font-family: 'Comic Sans MS', sans-serif;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 40px;
+  position: relative;
+}
+.footer-widget-heading h3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -15px;
+  height: 2px;
+  width: 50px;
+  background: #ff5e14;
+}
+
+/* FOOTER WIDGET 1 ENDS */
+
+
+/* FOOTER WIDGET 2 STARTS */
+
+.footer-widget ul li {
+  display: inline-block;
+  float: left;
+  width: 50%;
+  margin-bottom: 12px;
+}
+
+.footer-widget ul li a:hover{
+  color: #ff5e14;
+}
+
+.footer-widget ul li a {
+  font-family: 'Comic Sans MS', sans-serif;
+  color: #878787;
+  text-transform: capitalize;
+  text-decoration: none;
+}
+
+/* FOOTER WIDGET 2 ENDS */
+
+
+/* FOOTER WIDGET 3 STARTS */
+
+.subscribe-form {
+  position: relative;
+  overflow: hidden;
+}
+.subscribe-form input {
+  font-family: 'Comic Sans MS', sans-serif;
+  width: 100%;
+  padding: 14px 28px;
+  background: #2E2E2E;
+  border: 1px solid #2E2E2E;
+  color: #fff;
+}
+.subscribe-form button {
+    position: absolute;
+    right: 0;
+    background: #ff5e14;
+    padding: 13px 20px;
+    border: 1px solid #ff5e14;
+    top: 0;
+}
+.subscribe-form button i {
+  color: #fff;
+  font-size: 22px;
+  transform: rotate(-6deg);
+}
+
+/* FOOTER WIDGET 3 ENDS */
+
+/* FOOTER COPYRIGHT AREA STARTS */
+
+
+.copyright-area{
+  background: #202020;
+  padding: 25px 0;
+}
+.copyright-text p {
+  font-family: 'Comic Sans MS', sans-serif;
+  margin: 0;
+  font-size: 14px;
+  color: #878787;
+}
+.copyright-text p a{
+  color: #ff5e14;
+}
+.footer-menu li {
+  font-family: 'Comic Sans MS', sans-serif;
+  display: inline-block;
+  margin-left: 20px;
+}
+.footer-menu li:hover a{
+  color: #ff5e14;
+}
+.footer-menu li a {
+  font-family: 'Comic Sans MS', sans-serif;
+  font-size: 14px;
+  color: #878787;
+}
+
+/* FOOTER COPYRIGHT AREA ENDS */
+
+
+
+/* FOOTER ENDS */
+
+
+/* HOMEPAGE STARTS */
+
+.carousel-container{
+    border: 2px solid red;
+}
+
+.carousel{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+.carousel p{
+    color: white;
+}
+
+
+.carousel-select{
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none; /* Hide the scrollbar for Firefox */
+    -ms-overflow-style: none; /* Hide the scrollbar for IE/Edge */
+}
+
+.carousel-select::-webkit-scrollbar {
+    display: none; /* Hide the scrollbar for Chrome and Safari */
+}
+
+.carousel-track {
+    display: flex;
+    flex: 0 0 auto;
+}
+
+.carousel-item {
+    display: flex;
+    flex: 0 0 100%;
+    margin-right: 0px; /* Adjust margin as needed */
+}
+
+.carousel-item img {
+    width: 100%; /* Ensure images fill their container */
+}
+
+.carousel-prev, .carousel-next {
+    position: absolute; /* Position the buttons absolutely within the carousel-select */
+    top: 50%; /* Align vertically at the center */
+    transform: translateY(-50%); /* Adjust vertical alignment */
+    background-color: #333; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove border */
+    padding: 10px; /* Add some padding */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+.carousel-prev {
+    left: 0; /* Position the left arrow at the start */
+}
+
+.carousel-next {
+    right: 0; /* Position the right arrow at the end */
+}
+
+
+
+
+    </style>
 
 </head>
 <body>
@@ -16,29 +399,23 @@
 <p> Line Divide 1 </p>
 
 
-  <div class="container">
-    <div class="circle"></div>
-  </div>
 
+    <div class="home-container" >
+        <div class="carousel">
 
+          <div class="inner1">
 
+          </div>
+          <div class="inner2">
 
-<div class="skew-c"></div>
-<div class="colour-block">
-  <h1>Responsive Skewed Page Dividers.</h1>
-  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
+          </div>
+        </div>
+
+    </div>
+
+<div class="footer" >
+
 </div>
-<div class="skew-cc"></div>
-<div class="white-block">
-  <h1>Skewed Counter-Clockwise.</h1>
-  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
-</div>
-<div class="skew-c"></div>
-<div class="colour-block">
-  <h1>Skewed Clockwise.</h1>
-  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
-</div>
-
 
 </body>
 </html>
