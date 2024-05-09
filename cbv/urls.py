@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from django.views.generic import TemplateView, RedirectView
 
 from . import views
@@ -6,7 +6,8 @@ app_name="cbv"
 
 urlpatterns = [
     # path('', TemplateView.as_view(template_name='ex1.html', extra_context={'title': 'Custom Title'})),
-    path('', views.Ex2View.as_view(), name='ex2'),
+    # path('', views.Ex2View.as_view(), name='ex2'),
+    path('', include('routertest.urls')),
     path('rdt', views.RedirectView.as_view(url="http://www.google.com/"), name='go-you'),
     path('ex3/<int:pk>', views.PostPreLoadTaskView.as_view(), name='redirect-task'),
     path('ex4/<int:pk>/', views.SinglePost.as_view(), name='single-post'),
@@ -16,6 +17,5 @@ urlpatterns = [
     path('clip-path', views.ClipPath.as_view(), name='clip-path'),
     path('learn-svg', views.LearnSVG1.as_view(), name='learn-svg'),
     path('line-divide-1', views.LineDivide1.as_view(), name='line-divide-1'),
-
-
+    path("api_test", include('apitest.urls', namespace='api_test')),
 ]

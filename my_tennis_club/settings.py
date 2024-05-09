@@ -36,10 +36,14 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django_sass",
+    'rest_framework',
     "members",
     "cbv",
     "books",
     "cars",
+    "apitest",
+    "quickstart",
+    "routertest"
 ]
 
 MIDDLEWARE = [
