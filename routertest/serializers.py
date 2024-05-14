@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import YourModel, YourModel2, Instance
+from .models import YourModel, YourModel2, Instance, Renewal_Type
 
 
 class YourModel2Serializer(serializers.ModelSerializer):
@@ -9,10 +9,14 @@ class YourModel2Serializer(serializers.ModelSerializer):
 
 
 class YourModelSerializer(serializers.ModelSerializer):
-    yourmodel2 = YourModel2Serializer()
-
     class Meta:
         model = YourModel
+        fields = '__all__'
+
+
+class RenewalTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Renewal_Type
         fields = '__all__'
 
 
@@ -20,3 +24,7 @@ class InstanceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Instance
         fields = '__all__'
+
+    def validate(self, attrs):
+        print(attrs)
+        return attrs

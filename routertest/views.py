@@ -3,8 +3,8 @@ from django.shortcuts import render
 from rest_framework import permissions, viewsets
 from django.views.generic import TemplateView, DetailView, ListView, FormView, CreateView, UpdateView
 
-from .models import YourModel, YourModel2, Instance
-from .serializers import YourModelSerializer, InstanceSerializer, YourModel2Serializer
+from .models import YourModel, YourModel2, Instance, Renewal_Type
+from .serializers import YourModelSerializer, InstanceSerializer, YourModel2Serializer, RenewalTypeSerializer
 
 
 # Create your views here.
@@ -24,30 +24,30 @@ class YourModel2ViewSet(viewsets.ModelViewSet):
         return super().list(self, request, *args, **kwargs)
 
 
-class InstanceViewSet(viewsets.ModelViewSet):
-    queryset = Instance.objects.all()
-    serializer_class = InstanceSerializer
-
-    def list(self, request, *args, **kwargs):
-        print("HELLO WORLD")
-
-        queryset = self.get_queryset()
-        print(queryset)
-
-        for instance in queryset:
-            print("HERE")
-            print(instance.id)
-            print(instance.name)
-
-        return super().list(request, *args, **kwargs)
-
-    def perform_create(self, serializer):
-        print("ADD PERFORM")
-        request_data = self.request.data
-        print('request_data: ', request_data)
-        queryset = self.queryset
-        print('queryset: ', queryset)
-        serializer.save()
+# class InstanceViewSet(viewsets.ModelViewSet):
+#     queryset = Instance.objects.all()
+#     serializer_class = InstanceSerializer
+#
+#     def list(self, request, *args, **kwargs):
+#         print("HELLO WORLD")
+#
+#         queryset = self.get_queryset()
+#         print(queryset)
+#
+#         for instance in queryset:
+#             print("HERE")
+#             print(instance.id)
+#             print(instance.name)
+#
+#         return super().list(request, *args, **kwargs)
+#
+#     def perform_create(self, serializer):
+#         print("ADD PERFORM")
+#         request_data = self.request.data
+#         print('request_data: ', request_data)
+#         queryset = self.queryset
+#         print('queryset: ', queryset)
+#         serializer.save()
 
 
 class YourModelViewSet(viewsets.ModelViewSet):
@@ -67,3 +67,18 @@ class YourModelViewSet(viewsets.ModelViewSet):
 
         # Call the update method of the parent class
         return super().update(request, *args, **kwargs)
+
+
+class RenewalTypeViewSet(viewsets.ModelViewSet):
+    queryset = Renewal_Type.objects.all()
+    serializer_class = RenewalTypeSerializer
+
+
+class InstanceViewSet(viewsets.ModelViewSet):
+    queryset = Instance.objects.all()
+    serializer_class = InstanceSerializer
+
+    # def perform_create(self, serializer):
+    #     print(" no mo teas")
+    #     print(serializer)
+    #     serializer.save()
