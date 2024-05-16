@@ -4,11 +4,13 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 urlpatterns = [
-    # path("", include('cbv.urls', namespace='cbv')),
-    path("", include('routertest.urls')),
-    # path("admin/", admin.site.urls),
-    # path("books/", include('books.urls', namespace='books')),
+    # path('', include('cbv.urls', namespace='cbv')),
+    path("router/", include('routertest.urls')),
+    path("admin/", admin.site.urls),
+    path("", include('cbv.urls', namespace='cbv')),
+    path("books/", include('books.urls', namespace='books')),
 ]
 
 

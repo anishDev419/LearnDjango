@@ -1,7 +1,10 @@
+from decouple import config
+from django.contrib.auth.models import User
 from django.shortcuts import render
 
 from rest_framework import permissions, viewsets
 from django.views.generic import TemplateView, DetailView, ListView, FormView, CreateView, UpdateView
+from django.utils import timezone
 
 from .models import YourModel, YourModel2, Instance, Renewal_Type
 from .serializers import YourModelSerializer, InstanceSerializer, YourModel2Serializer, RenewalTypeSerializer
@@ -78,7 +81,32 @@ class InstanceViewSet(viewsets.ModelViewSet):
     queryset = Instance.objects.all()
     serializer_class = InstanceSerializer
 
-    # def perform_create(self, serializer):
-    #     print(" no mo teas")
-    #     print(serializer)
-    #     serializer.save()
+    def perform_create(self, serializer):
+        print(" no mo teas")
+        instance = serializer.save()
+
+        instance.date_of_admission = timezone.now().date().strftime("%Y-%m-%d")
+
+        # ADDING NEW USER
+        # Generate a unique identifier for username
+        unique_identifier = timezone.now().strftime("%Y%m%d%H%M%S")
+        username = f'{instance.name}_user_{unique_identifier}'
+        password = config('default_password')
+
+        new_user = User(username=username, email=instance.email, first_name=instance.name, last_name='admin')
+        new_user.set_password(password)
+        print("new_user: ", new_user)
+        new_user.save()
+
+        serializer.save()
+
+    def perform_update(self, serializer):
+        instance = self.get_object()
+        updated_instance = serializer.save()
+
+        if updated_instance.renewal_type != instance.renewal_type:
+            print("NOT THE SAME")
+        else:
+            print("THE SAME")
+
+        serializer.save()

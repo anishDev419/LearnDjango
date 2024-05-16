@@ -21,6 +21,7 @@ class Ex2View(TemplateView):
         print(settings.MEDIA_ROOT)
 
         car = Cars.objects.get(name="57 Chevy")
+        # car = Cars.objects.get(name="57 Chevy")
 
         print(car.photo)
         print(car.photo.name)
@@ -43,19 +44,19 @@ class Ex2View(TemplateView):
         return context
 
 
-class PostPreLoadTaskView(RedirectView):
-    pattern_name = "cbv:single-post"
-    members = Member.objects.latest("id")
-
-    def get_redirect_url(self, *args, **kwargs):
-        # pk = get_object_or_404(kwargs['pk'])
-        # post.count = F('count') + 1
-        # post.save()
-
-        pk = kwargs['pk']
-        pick_member = Member.objects.filter(id=pk)
-        pick_member.update(count=F('count') + 1)
-        return super().get_redirect_url(*args, **kwargs)
+# class PostPreLoadTaskView(RedirectView):
+#     pattern_name = "cbv:single-post"
+#     members = Member.objects.latest("id")
+#
+#     def get_redirect_url(self, *args, **kwargs):
+#         # pk = get_object_or_404(kwargs['pk'])
+#         # post.count = F('count') + 1
+#         # post.save()
+#
+#         pk = kwargs['pk']
+#         pick_member = Member.objects.filter(id=pk)
+#         pick_member.update(count=F('count') + 1)
+#         return super().get_redirect_url(*args, **kwargs)
 
 
 class SinglePost(TemplateView):
